@@ -1,4 +1,4 @@
-﻿; AutoHotKey_v1.1 HotKey_v0.9 lesnikm4@gmail.com
+﻿; AutoHotKey_v1.1 HotKey_v1.0 lesnikm4@gmail.com
 ; ^ Ctrl
 ; # Win
 ; + Shift
@@ -13,38 +13,7 @@
 GuiSettings()
 MouseButtonLeftHand()
 
-F8:: Rand()
-Rand() {
-Loop 100 {
-;    Sleep 300
-;    sourceText := GetSelectedText()
-    randMin := 1
-    randMax := 2000
-;    randMin := randMin - 0.1
-;    randMax := randMax + 0.1
-;    randMin := sourceText - 50.1
-;    randMax := sourceText + 50.1
-    Random randNum, %randMin%, %randMax%
-        ToolTip %randMin%`n`n%randMax%, 1550, 20
-;    randNum := Round(randNum, 0)
-    randNum := Round(randNum, 2)
-;    randNum := randNum - Mod(randNum, 0.01)
-    randNum := Round(randNum, 2)
-    Send %randNum% {Enter}
-}
-}
-
 ;NumpadEnter:: Send {Enter}{Enter}=
-;NumpadAdd:: Send ^{v}
-;NumpadSub:: HotTrans("ru", "uk")
-;F7:: HotTrans("ru", "uk")
-;F3:: Send #4820192100173{Enter}
-HotTrans(from_lang, to_lang) {
-    oldText := GetSelectedText()
-    TransAndReplaceSelectedText(from_lang, to_lang)
-    StringLower, lowerText, oldText
-    ClipBoard := lowerText
-}
 
 #M:: MouseButtonRevers()
 CapsLock:: ChangeLanguageInput()
@@ -77,6 +46,8 @@ CapsLock:: ChangeLanguageInput()
 
 #PgUp:: SelectedTextUpper()
 #PgDn:: SelectedTextTitle()
+#Ins:: HotTrans("ru", "uk")
+#Del:: Rand()
 
 <^>!vk32::  SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
 <^>!+vk32:: SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
@@ -100,33 +71,27 @@ CapsLock:: ChangeLanguageInput()
 <^>!+vkDB:: SendOfCaps("{U+007B}","{U+007B}") ; Х -> { {
 <^>!vkDD::  SendOfCaps("{U+005D}","{U+005D}") ; ъ -> ] ]
 <^>!+vkDD:: SendOfCaps("{U+007D}","{U+007D}") ; Ъ -> } }
-ї::  SendOfCaps("{U+044A}","{U+042A}") ; ї -> ъ Ъ
-+ї:: SendOfCaps("{U+042A}","{U+044A}") ; Ї -> Ъ ъ
 <^>!+vkDC:: SendOfCaps("{U+007C}","{U+007C}") ; / -> | |
-<^>!vkC0::  SendOfCaps("{U+0060}","{U+0060}") ; ё -> ` `
-<^>!+vkC0:: SendOfCaps("{U+007E}","{U+007E}") ; Ё -> ~ ~
-<^>!vkDE::  SendOfCaps("{U+0027}","{U+0027}") ; э -> ' '
-<^>!+vkDE:: SendOfCaps("{U+0022}","{U+0022}") ; Э -> " "
-є::  SendOfCaps("{U+044D}","{U+042D}") ; є -> э Э
-+є:: SendOfCaps("{U+042D}","{U+044D}") ; Є -> Э э
-<^>!vk53::  SendOfCaps("{U+0456}","{U+0406}") ; ы -> і І
-<^>!+vk53:: SendOfCaps("{U+0406}","{U+0456}") ; Ы -> І і
-і::  SendOfCaps("{U+044B}","{U+042B}") ; і -> ы Ы
-+І:: SendOfCaps("{U+042B}","{U+044B}") ; І -> Ы ы
-<^>!vk42::  SendOfCaps("{U+0457}","{U+0407}") ; и -> ї Ї
-<^>!+vk42:: SendOfCaps("{U+0407}","{U+0457}") ; И -> Ї ї
+<^>!vkC0::  SendOfCaps("{U+0060}","{U+0060}") ; ` -> ` `
+<^>!+vkC0:: SendOfCaps("{U+007E}","{U+007E}") ; ~ -> ~ ~
+<^>!vkDE::  SendOfCaps("{U+0027}","{U+0027}") ; є -> ' '
+<^>!+vkDE:: SendOfCaps("{U+0022}","{U+0022}") ; Є -> " "
+<^>!vk53::  SendOfCaps("{U+044B}","{U+042B}") ; і -> ы Ы
+<^>!+vk53:: SendOfCaps("{U+042B}","{U+044B}") ; І -> Ы ы
+<^>!vk42::  SendOfCaps("{U+044A}","{U+042B}") ; и -> ъ Ъ
+<^>!+vk42:: SendOfCaps("{U+042B}","{U+044A}") ; И -> Ъ ъ
 <^>!vk55::  SendOfCaps("{U+0491}","{U+0490}") ; г -> ґ Ґ
 <^>!+vk55:: SendOfCaps("{U+0490}","{U+0491}") ; Г -> Ґ ґ
-<^>!vk50::  SendOfCaps("{U+0454}","{U+0404}") ; з -> є Є
-<^>!+vk50:: SendOfCaps("{U+0404}","{U+0454}") ; З -> Є є
+<^>!vk50::  SendOfCaps("{U+044D}","{U+042D}") ; з -> э Э
+<^>!+vk50:: SendOfCaps("{U+042D}","{U+044D}") ; З -> Э э
 <^>!vk45::  SendOfCaps("{U+045E}","{U+040E}") ; у -> ў Ў
-<^>!+vk45:: SendOfCaps("{U+040E}","{U+045E}") ; У -> Ў у
+<^>!+vk45:: SendOfCaps("{U+040E}","{U+045E}") ; У -> Ў ў
 <^>!vk54::  SendOfCaps("{U+0451}","{U+0401}") ; е -> ё Ё
 <^>!+vk54:: SendOfCaps("{U+0401}","{U+0451}") ; Е -> Ё ё
 
 #U:: Reload
-
 #Q:: ExitApp
+
 
 GuiSettings() {
     SetWorkingDir %A_ScriptDir%\..\..\..\
@@ -235,7 +200,6 @@ ChangeLanguageInput() {
     WinGet, winID,, A
     threadID := dllCall("GetWindowThreadProcessId", "uint", winID, "uint", 0)
     codeCurrentLang := dllCall("GetKeyboardLayout", "uint", threadID)
-;    msgbox % Format("{1:#x}", codeCurrentLang)
     ControlGetFocus, ControlNN, A
 
     if (processName = "cmd.exe" or processName = "wsl.exe" or processName = "debian.exe") {
@@ -252,7 +216,7 @@ ChangeLanguageInput() {
             LangState := 67699721
     }
 
-    ;EN=67699721 EN=0x4090409 RU=0x4190419 UA=0000409
+    ;EN=0x4090409 RU=0x4190419 UA=0000409
     if (codeCurrentLang == 67699721) {
         global LangState
         LangState := "no eng"
@@ -290,6 +254,19 @@ LongPress(keyLongpress) {
     }
 }
 
+Rand() {
+    randMin := 1
+    randMax := 1000
+    round := 0.05
+    randMin := randMin - 0.1
+    randMax := randMax + 0.1
+    Random randNum, %randMin%, %randMax%
+    randNum := randNum - Mod(randNum, round)
+    randNum := Round(randNum, 2)
+    ToolTip %randMin%`n%randMax%`n%round%`n`n%randNum%, 1550, 20
+    Send %randNum% {Enter}
+}
+
 TransSelectedText(from_lang, to_lang) {
     sourceText := GetSelectedText()
     if (sourceText) {
@@ -311,6 +288,14 @@ TransAndReplaceSelectedText(from_lang, to_lang) {
     }
 }
 
+HotTrans(from_lang, to_lang) {
+    oldText := GetSelectedText()
+    TransAndReplaceSelectedText(from_lang, to_lang)
+    StringLower, lowerText, oldText
+    ClipBoard := lowerText
+}
+
+
 ; Код перевода скопирован от уважаемого teadrinker, http://forum.script-coding.com/viewtopic.php?id=4492
 CreateUrl(text, lng) {
    static JS := CreateScriptObj()
@@ -327,7 +312,6 @@ EncodeDecodeURI(str, encode := true, component := true) {
       str := StrReplace(str, v[1], v[2])
    Return JS.eval( (encode ? "en" : "de") . "codeURI" . (component ? "Component" : "") . "('" . str . "')" )
 }
-
 
 GoogleTranslate(str, ByRef from, to := "en", detail := False) {
    static JS := CreateScriptObj()
