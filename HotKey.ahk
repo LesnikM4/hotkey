@@ -1,9 +1,10 @@
-﻿; AutoHotKey_v1.1 HotKey_v1.0 lesnikm4@gmail.com
+﻿; AutoHotKey_v1.1 HotKey_v1.1 lesnikm4@gmail.com
 ; ^ Ctrl
 ; # Win
 ; + Shift
 ; ! Atl
 ; <^>! RAlt (in russhian keyboard)
+
 
 #NoEnv
 #SingleInstance, force
@@ -13,7 +14,11 @@
 GuiSettings()
 MouseButtonLeftHand()
 
+
 ;NumpadEnter:: Send {Enter}{Enter}=
+;Numpad6:: Send +>
+;Numpad5:: Send {Space}{#}del{Enter}
+;Numpad4:: Send +<
 
 #M:: MouseButtonRevers()
 CapsLock:: ChangeLanguageInput()
@@ -48,6 +53,7 @@ CapsLock:: ChangeLanguageInput()
 #PgDn:: SelectedTextTitle()
 #Ins:: HotTrans("ru", "uk")
 #Del:: Rand()
+#V:: ShowPosCursor()
 
 <^>!vk32::  SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
 <^>!+vk32:: SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
@@ -194,6 +200,11 @@ MouseButtonRevers() {
         buttonState := DllCall("user32.dll\SwapMouseButton", "UInt", 0)
 }
 
+ShowPosCursor() {
+    MouseGetPos, x, y
+    Tooltip %x% %y%
+}
+
 LangState := ""
 ChangeLanguageInput() {
     WinGet, processName, ProcessName, A
@@ -255,8 +266,8 @@ LongPress(keyLongpress) {
 }
 
 Rand() {
-    randMin := 1
-    randMax := 1000
+    randMin := -40
+    randMax := -200
     round := 0.05
     randMin := randMin - 0.1
     randMax := randMax + 0.1
