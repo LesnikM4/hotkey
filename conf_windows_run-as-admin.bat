@@ -6,6 +6,9 @@
 :: Отключить значек видеоконференции 
 :: Убрать ярлыки с панели
 :: Убрать лишние программы из автозапуска
+:: Отключить в микшере звук системных оповещений и звук терминала
+:: Поменять цвет терминала на белый
+:: Установить удаленку
 
 :: НАСТРОЙКА WSL
 ::sudo apt-get update
@@ -17,13 +20,17 @@
 ::git checkout main -f
 ::git branch --set-upstream-to origin/main
 ::~/.scripts/install
+::touch ~/.bashrc.local
+::echo "cd /mnt/c/Users/lm/Downloads/" >> ~/.bashrc.local
 
 :: НАСТРОЙКА МОНТИРОВАНИЯ АНДРОИД
-::sudo install sshfs
-::sudo echo "user_allow_other" >> /etc/fuse.conf 
+::sudo apt-get install sshfs
+::sudo sh -c "echo "user_allow_other" >> /etc/fuse.conf"
 ::sudo mkdir /mnt/android
 ::sudo chown lm:lm /mnt/android
 ::sudo chmod 777 /mnt/android
+::sudo ln -s /proc/self/mounts /etc/mtab
+::ssh-copy-id -p 8022 lm@192.168.1.22
 ::sshfs -p 8022 lm@192.168.1.22:/data/data/com.termux/files/home/storage/downloads/ /mnt/android/ -o allow_other
 ::создаем ярлык доступа в винде \\wsl$\Debian\mnt\android
 

@@ -1,53 +1,36 @@
-﻿; AutoHotKey_v1.1 HotKey_v1.1 lesnikm4@gmail.com
-; ^ Ctrl
-; # Win
-; + Shift
-; ! Atl
-; <^>! RAlt (in russhian keyboard)
+﻿;AutoHotKey_v1.1 HotKey_v1.1 lesnikm4@gmail.com
+;^ Ctrl, # Win, + Shift, ! Atl, >! RAlt (in keyboard), <^>! RAlt (in russhian keyboard)
 
-
-#NoEnv
-#SingleInstance, force
-#InstallMouseHook
-#UseHook
-
-GuiSettings()
+Settings()
 MouseButtonLeftHand()
 
-
-;NumpadEnter:: Send {Enter}{Enter}=
-;Numpad6:: Send +>
-;Numpad5:: Send {Space}{#}del{Enter}
-;Numpad4:: Send +<
-
-#M:: MouseButtonRevers()
-CapsLock:: ChangeLanguageInput()
-
-#Down:: Volume(-1)
-#Up:: Volume(+1)
-#Left:: Light(-3)
-#Right:: Light(+3)
+#Down:: Volume(-2)
+#Up:: Volume(+2)
+#Left:: Light(-2)
+#Right:: Light(+2)
 #ESC:: PowerSleep()
 #Z:: ColorFiltersCycle()
 
-#K::WindowMove("Up")
+#K:: WindowMove("Up")
 #J:: WindowMove("Down")
-#H::WindowMove("Left")
+#H:: WindowMove("Left")
 #L:: WindowMove("Right")
-#`;::WindowMaxMin()
+#`;:: WindowMaxMin()
+#':: WindowMinimize()
 
-^+Space::TransSelectedText("auto", "ru")
-^+!Space::TransSelectedText("ru", "en")
-<^>!+Space::TransSelectedText("ru", "uk")
+^+Space:: MagickSelected()
+^+!Space:: TransSelectedText("ru", "en")
+<^>!+Space:: TransSelectedText("ru", "uk")
+>^RAlt:: TransInput("auto", "ru")
 
-#T::Run debian
-#F::Run C:\Windows\explorer.exe "C:\Users\%A_UserName%\Downloads"
-#C::Run C:\Windows\System32\calc.exe
-#B::Run .\PortableApps\GoogleChromePortable\GoogleChromePortable.exe
-#A::Run .\PortableApps\7-ZipPortable\7-ZipPortable.exe
-#E::Run .\PortableApps\gVimPortable\gVimPortable.exe
-#S::Run .\PortableApps\fscPortable\fscPortable.exe
-#D::Run .\PortableApps\TransmissionPortable\TransmissionPortable.exe
+#T:: Run debian
+#F:: Run C:\Windows\explorer.exe ""C:\Users\%A_UserName%\Downloads"
+#C:: Run C:\Windows\System32\calc.exe
+#B:: Run .\PortableApps\GoogleChromePortable\GoogleChromePortable.exe
+#A:: Run .\PortableApps\7-ZipPortable\7-ZipPortable.exe
+#E:: Run .\PortableApps\gVimPortable\gVimPortable.exe
+#S:: Run .\PortableApps\fscPortable\fscPortable.exe
+#D:: Run .\PortableApps\qBittorrentPortable\qBittorrentPortable.exe
 
 #PgUp:: SelectedTextUpper()
 #PgDn:: SelectedTextTitle()
@@ -55,51 +38,97 @@ CapsLock:: ChangeLanguageInput()
 #Del:: Rand()
 #V:: ShowPosCursor()
 
+#M:: MouseButtonRevers()
+CapsLock:: ChangeLanguageInput()
+
 <^>!vk32::  SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
+>!vk32::  SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
 <^>!+vk32:: SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
+>!+vk32:: SendOfCaps("{U+0040}","{U+0040}") ; 2 -> @ @
 <^>!vk33::  SendOfCaps("{U+0023}","{U+0023}") ; 3 -> # #
+>!vk33::  SendOfCaps("{U+0023}","{U+0023}") ; 3 -> # #
 <^>!+vk33:: SendOfCaps("{U+0023}","{U+0023}") ; 3 -> # #
+>!+vk33:: SendOfCaps("{U+0023}","{U+0023}") ; 3 -> # #
 <^>!vk34::  SendOfCaps("{U+0024}","{U+0024}") ; 4 -> $ $
+>!vk34::  SendOfCaps("{U+0024}","{U+0024}") ; 4 -> $ $
 <^>!+vk34:: SendOfCaps("{U+0024}","{U+0024}") ; 4 -> $ $
+>!+vk34:: SendOfCaps("{U+0024}","{U+0024}") ; 4 -> $ $
 <^>!vk36::  SendOfCaps("{U+005E}","{U+005E}") ; 6 -> ^ ^
+>!vk36::  SendOfCaps("{U+005E}","{U+005E}") ; 6 -> ^ ^
 <^>!+vk36:: SendOfCaps("{U+005E}","{U+005E}") ; 6 -> ^ ^
+>!+vk36:: SendOfCaps("{U+005E}","{U+005E}") ; 6 -> ^ ^
 <^>!vk37::  SendOfCaps("{U+0026}","{U+0026}") ; 7 -> & &
+>!vk37::  SendOfCaps("{U+0026}","{U+0026}") ; 7 -> & &
 <^>!+vk37:: SendOfCaps("{U+0026}","{U+0026}") ; 7 -> & &
+>!+vk37:: SendOfCaps("{U+0026}","{U+0026}") ; 7 -> & &
 <^>!vkBF::  SendOfCaps("{U+002F}","{U+002F}") ; . -> / /
+>!vkBF::  SendOfCaps("{U+002F}","{U+002F}") ; . -> / /
 <^>!+vkBF:: SendOfCaps("{U+003F}","{U+003F}") ; , -> ? ?
+>!+vkBF:: SendOfCaps("{U+003F}","{U+003F}") ; , -> ? ?
 <^>!vkBC::  SendOfCaps("{U+002C}","{U+002C}") ; б -> , ,
+>!vkBC::  SendOfCaps("{U+002C}","{U+002C}") ; б -> , ,
 <^>!+vkBC:: SendOfCaps("{U+003C}","{U+003C}") ; Б -> < <
+>!+vkBC:: SendOfCaps("{U+003C}","{U+003C}") ; Б -> < <
 <^>!vkBE::  SendOfCaps("{U+002E}","{U+002E}") ; ю -> . .
+>!vkBE::  SendOfCaps("{U+002E}","{U+002E}") ; ю -> . .
 <^>!+vkBE:: SendOfCaps("{U+003E}","{U+003E}") ; Ю -> > >
+>!+vkBE:: SendOfCaps("{U+003E}","{U+003E}") ; Ю -> > >
 <^>!vkBA::  SendOfCaps("{U+003B}","{U+003B}") ; ж -> ; ;
+>!vkBA::  SendOfCaps("{U+003B}","{U+003B}") ; ж -> ; ;
 <^>!+vkBA:: SendOfCaps("{U+003A}","{U+003A}") ; Ж -> : :
+>!+vkBA:: SendOfCaps("{U+003A}","{U+003A}") ; Ж -> : :
 <^>!vkDB::  SendOfCaps("{U+005B}","{U+005B}") ; х -> [ [
+>!vkDB::  SendOfCaps("{U+005B}","{U+005B}") ; х -> [ [
 <^>!+vkDB:: SendOfCaps("{U+007B}","{U+007B}") ; Х -> { {
+>!+vkDB:: SendOfCaps("{U+007B}","{U+007B}") ; Х -> { {
 <^>!vkDD::  SendOfCaps("{U+005D}","{U+005D}") ; ъ -> ] ]
+>!vkDD::  SendOfCaps("{U+005D}","{U+005D}") ; ъ -> ] ]
 <^>!+vkDD:: SendOfCaps("{U+007D}","{U+007D}") ; Ъ -> } }
+>!+vkDD:: SendOfCaps("{U+007D}","{U+007D}") ; Ъ -> } }
 <^>!+vkDC:: SendOfCaps("{U+007C}","{U+007C}") ; / -> | |
+>!+vkDC:: SendOfCaps("{U+007C}","{U+007C}") ; / -> | |
 <^>!vkC0::  SendOfCaps("{U+0060}","{U+0060}") ; ` -> ` `
+>!vkC0::  SendOfCaps("{U+0060}","{U+0060}") ; ` -> ` `
 <^>!+vkC0:: SendOfCaps("{U+007E}","{U+007E}") ; ~ -> ~ ~
+>!+vkC0:: SendOfCaps("{U+007E}","{U+007E}") ; ~ -> ~ ~
 <^>!vkDE::  SendOfCaps("{U+0027}","{U+0027}") ; є -> ' '
+>!vkDE::  SendOfCaps("{U+0027}","{U+0027}") ; є -> ' '
 <^>!+vkDE:: SendOfCaps("{U+0022}","{U+0022}") ; Є -> " "
+>!+vkDE:: SendOfCaps("{U+0022}","{U+0022}") ; Є -> " "
 <^>!vk53::  SendOfCaps("{U+044B}","{U+042B}") ; і -> ы Ы
+>!vk53::  SendOfCaps("{U+044B}","{U+042B}") ; і -> ы Ы
 <^>!+vk53:: SendOfCaps("{U+042B}","{U+044B}") ; І -> Ы ы
+>!+vk53:: SendOfCaps("{U+042B}","{U+044B}") ; І -> Ы ы
 <^>!vk42::  SendOfCaps("{U+044A}","{U+042B}") ; и -> ъ Ъ
+>!vk42::  SendOfCaps("{U+044A}","{U+042B}") ; и -> ъ Ъ
 <^>!+vk42:: SendOfCaps("{U+042B}","{U+044A}") ; И -> Ъ ъ
+>!+vk42:: SendOfCaps("{U+042B}","{U+044A}") ; И -> Ъ ъ
 <^>!vk55::  SendOfCaps("{U+0491}","{U+0490}") ; г -> ґ Ґ
+>!vk55::  SendOfCaps("{U+0491}","{U+0490}") ; г -> ґ Ґ
 <^>!+vk55:: SendOfCaps("{U+0490}","{U+0491}") ; Г -> Ґ ґ
+>!+vk55:: SendOfCaps("{U+0490}","{U+0491}") ; Г -> Ґ ґ
 <^>!vk50::  SendOfCaps("{U+044D}","{U+042D}") ; з -> э Э
+>!vk50::  SendOfCaps("{U+044D}","{U+042D}") ; з -> э Э
 <^>!+vk50:: SendOfCaps("{U+042D}","{U+044D}") ; З -> Э э
+>!+vk50:: SendOfCaps("{U+042D}","{U+044D}") ; З -> Э э
 <^>!vk45::  SendOfCaps("{U+045E}","{U+040E}") ; у -> ў Ў
+>!vk45::  SendOfCaps("{U+045E}","{U+040E}") ; у -> ў Ў
 <^>!+vk45:: SendOfCaps("{U+040E}","{U+045E}") ; У -> Ў ў
+>!+vk45:: SendOfCaps("{U+040E}","{U+045E}") ; У -> Ў ў
 <^>!vk54::  SendOfCaps("{U+0451}","{U+0401}") ; е -> ё Ё
+>!vk54::  SendOfCaps("{U+0451}","{U+0401}") ; е -> ё Ё
 <^>!+vk54:: SendOfCaps("{U+0401}","{U+0451}") ; Е -> Ё ё
+>!+vk54:: SendOfCaps("{U+0401}","{U+0451}") ; Е -> Ё ё
 
 #U:: Reload
 #Q:: ExitApp
 
 
-GuiSettings() {
+Settings() {
+    #NoEnv
+    #SingleInstance, force
+    #InstallMouseHook
+    #UseHook
     SetWorkingDir %A_ScriptDir%\..\..\..\
     Menu, Tray, Icon, .\PortableApps\AutoHotKey\Script\HotKey.ico
     Menu, Tray, Add
@@ -108,27 +137,27 @@ GuiSettings() {
 }
 
 GetSelectedText() {
-    LastClip := ClipBoardAll
+    last_clip := ClipBoardAll
     ClipBoard := ""
     Send ^c
     ClipWait, 0.1
-    Text := ClipBoard
-    ClipBoard := LastClip
-    return Text
+    text := ClipBoard
+    ClipBoard := last_clip
+    return text
 }
 
 SelectedTextUpper() {
     Sleep 300
-    sourceText := GetSelectedText()
-    StringUpper, upText, sourceText
-    Send %upText%
+    source_text := GetSelectedText()
+    StringUpper, up_text, source_text
+    Send %up_text%
 }
 
 SelectedTextTitle() {
     Sleep 300
-    sourceText := GetSelectedText()
-    StringUpper, upText, sourceText, T
-    Send %upText%
+    source_text := GetSelectedText()
+    StringUpper, up_text, source_text, T
+    Send %up_text%
 }
 
 OpenEditorScript() {
@@ -140,38 +169,30 @@ PowerSleep() {
 }
 
 ColorFiltersCycle() {
-    RegRead, colorFilteringHotkey, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, Active
-    if (!colorFilteringHotkey)
+    RegRead, color_filtering_hotkey, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, Active
+    if (!color_filtering_hotkey)
         RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, HotkeyEnabled, 1
 
-    RegRead, colorFilteringActive, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, Active
-    RegRead, colorFilteringType, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, FilterType
-    if (!colorFilteringActive) {
+    RegRead, color_filtering_active, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, Active
+    RegRead, color_filtering_type, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, FilterType
+    if (!color_filtering_active) {
         RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, FilterType, 0
         Send ^#c
-    } else if (colorFilteringActive && !colorFilteringType) {
+    } else if (color_filtering_active && !color_filtering_type) {
         RegWrite, REG_DWORD, HKEY_CURRENT_USER\Software\Microsoft\ColorFiltering, FilterType, 2
         Send ^#c
         Send ^#c
-    } else if (colorFilteringActive && colorFilteringType) {
+    } else if (color_filtering_active && color_filtering_type) {
         Send ^#c
     }
 }
 
 Volume(step) {
-abs_step := Abs(step)
+    abs_step := Abs(step)
     if (step>0)
         Send {VKAF %abs_step%}
     else
         Send {VKAE %abs_step%}
-}
-
-WindowMaxMin() {
-    WinGet max_min, MinMax, A
-    if (max_min = "0")
-        WinMaximize A
-    else
-        WinRestore A
 }
 
 WindowMove(direction) {
@@ -186,18 +207,30 @@ WindowMove(direction) {
         WinMove, A,, 0, 0, %A_ScreenWidth%, % (A_ScreenHeight-35)/2
 }
 
+WindowMaxMin() {
+    WinGet max_min, MinMax, A
+    if (max_min = "0")
+        WinMaximize A
+    else
+        WinRestore A
+}
+
+WindowMinimize() {
+    WinMinimize A
+}
+
 MouseButtonRightHand() {
-    buttonState := DllCall("user32.dll\SwapMouseButton", "UInt", 0)
+    button_state := DllCall("user32.dll\SwapMouseButton", "UInt", 0)
 }
 
 MouseButtonLeftHand() {
-    buttonState := DllCall("user32.dll\SwapMouseButton", "UInt", 1)
+    button_state := DllCall("user32.dll\SwapMouseButton", "UInt", 1)
 }
 
 MouseButtonRevers() {
-    buttonState := DllCall("user32.dll\SwapMouseButton", "UInt", 1)
-    if buttonState <> 0
-        buttonState := DllCall("user32.dll\SwapMouseButton", "UInt", 0)
+    button_state := DllCall("user32.dll\SwapMouseButton", "UInt", 1)
+    if button_state <> 0
+        button_state := DllCall("user32.dll\SwapMouseButton", "UInt", 0)
 }
 
 ShowPosCursor() {
@@ -205,107 +238,152 @@ ShowPosCursor() {
     Tooltip %x% %y%
 }
 
-LangState := ""
+lang_state := ""
 ChangeLanguageInput() {
-    WinGet, processName, ProcessName, A
-    WinGet, winID,, A
-    threadID := dllCall("GetWindowThreadProcessId", "uint", winID, "uint", 0)
-    codeCurrentLang := dllCall("GetKeyboardLayout", "uint", threadID)
-    ControlGetFocus, ControlNN, A
+    WinGet, process_name, ProcessName, A
+    WinGet, win_id,, A
+    thread_id := dllCall("GetWindowThreadProcessId", "uint", win_id, "uint", 0)
+    code_current_lang := dllCall("GetKeyboardLayout", "uint", thread_id)
+    ControlGetFocus, control_nn, A
 
-    if (processName = "cmd.exe" or processName = "wsl.exe" or processName = "debian.exe") {
-        global LangState
-        lang := LangState
+    if (process_name = "cmd.exe" or process_name = "wsl.exe" or process_name = "debian.exe") {
+        global lang_state
+        lang := lang_state
         if (lang = "")
-            lang := codeCurrentLang
+            lang := code_current_lang
 
-        codeCurrentLang := lang
+        code_current_lang := lang
 
         if (lang == 67699721)
-            LangState := "no eng"
+            lang_state := "no eng"
         else
-            LangState := 67699721
+            lang_state := 67699721
     }
 
     ;EN=0x4090409 RU=0x4190419 UA=0000409
-    if (codeCurrentLang == 67699721) {
-        global LangState
-        LangState := "no eng"
-        langCode := "0x0000422"
+    if (code_current_lang == 67699721) {
+        global lang_state
+        lang_state := "no eng"
+        lang_code := "0x0000422"
     }
     else {
-        global LangState
-        LangState := 67699721
-        langCode := "0x0000409"
+        global lang_state
+        lang_state := 67699721
+        lang_code := "0x0000409"
     }
-    PostMessage, 0x50,, %langCode%, %ControlNN%, A
+    PostMessage, 0x50,, %lang_code%, %control_nn%, A
 }
 
-SendOfCaps(sendCapsOff, sendCapsOn) {
+SendOfCaps(send_caps_off, send_caps_on) {
     if GetKeyState("CapsLock", "T")
-        Send %sendCapsOn%
+        Send %send_caps_on%
     else
-        Send %sendCapsOff%
+        Send %send_caps_off%
 }
 
-LongPress(keyLongpress) {
-    thisHotKey = %A_ThisHotKey%
-    if RegExMatch(thisHotKey, "\+vk*") {
-        thisHotKey := SubStr(thisHotKey, 2)
+LongPress(key_longpress) {
+    this_hot_key = %A_ThisHotKey%
+    if RegExMatch(this_hot_key, "\+vk*") {
+        this_hot_key := SubStr(this_hot_key, 2)
         caps := 1
     }
-    KeyWait, %thisHotKey%, T0.19
+    KeyWait, %this_hot_key%, T0.19
     if ErrorLevel {
-        Send %keyLongpress%
+        Send %key_longpress%
     } else {
         if caps
-            Send +{%thisHotKey%}
+            Send +{%this_hot_key%}
         else
-            Send {%thisHotKey%}
+            Send {%this_hot_key%}
     }
 }
 
-Rand() {
-    randMin := -40
-    randMax := -200
-    round := 0.05
-    randMin := randMin - 0.1
-    randMax := randMax + 0.1
-    Random randNum, %randMin%, %randMax%
-    randNum := randNum - Mod(randNum, round)
-    randNum := Round(randNum, 2)
-    ToolTip %randMin%`n%randMax%`n%round%`n`n%randNum%, 1550, 20
-    Send %randNum% {Enter}
+Rand(min:=0, max:=1000, round:=2, round_fraction:="no") {
+    min := min + 0.0
+    max := max + 0.0
+    Random rand, %min%, %max%
+    if (!round_fraction == "no")
+        rand := rand - Mod(rand, round_fraction)
+    rand := Round(rand, 2)
+    ToolTip min %min%`nmax %max%`nround %round%`n`n%rand%, 1550, 20
+    Send %rand% {Enter}
+}
+
+MagickSelected() {
+    curs_dollor := 36.56
+    curs_euro := 40.34
+    source_text := GetSelectedText()
+    is_number := RegExMatch(sourceText, "^[0-9., €$]+$")
+    if (is_number) {
+        is_dollor := RegExMatch(source_text, "[$]")
+        is_euro := RegExMatch(source_text, "€")
+        is_grivna := RegExMatch(source_text, "₴")
+        source_text := RegExReplace(source_text, "[,]", ".")
+        source_text := RegExReplace(source_text, "[$€₴ ]", "")
+        if (is_dollor) {
+            summ := source_text * curs_dollor
+            summ := Round(summ, 0)
+            source_text := RegExReplace(source_text, "\G\d+?(?=(?:\d{3})+(?:\D|$))", "$0 ")
+            summ := RegExReplace(summ, "\G\d+?(?=(?:\d{3})+(?:\D|$))", "$0 ")
+            ToolTip %source_text%$`n`n%summ%грн., 1550, 20
+        } else if (is_euro) {
+            summ := source_text * curs_euro
+            summ := Round(summ, 0)
+            source_text := RegExReplace(source_text, "\G\d+?(?=(?:\d{3})+(?:\D|$))", "$0 ")
+            summ := RegExReplace(summ, "\G\d+?(?=(?:\d{3})+(?:\D|$))", "$0 ")
+            ToolTip %source_text%€`n`n%summ%грн., 1550, 20
+        } else {
+            summ := source_text / curs_dollor
+            summ := Round(summ, 2)
+            source_text := RegExReplace(source_text, "\G\d+?(?=(?:\d{3})+(?:\D|$))", "$0 ")
+            summ := RegExReplace(summ, "\G\d+?(?=(?:\d{3})+(?:\D|$))", "$0 ")
+            ToolTip %source_text%грн.`n`n%summ%$, 1550, 20
+        }
+    }
+    else {
+        TransSelectedText("auto", "ru")
+    }
 }
 
 TransSelectedText(from_lang, to_lang) {
-    sourceText := GetSelectedText()
-    if (sourceText) {
-        transText := GoogleTranslate(sourceText, from_lang, to_lang, True)
-        ToolTip %sourceText%`n`n%transText%, 1550, 20
+    source_text := GetSelectedText()
+    if (source_text) {
+        trans_text := GoogleTranslate(source_text, from_lang, to_lang, True)
+        ToolTip %source_text%`n`n%trans_text%, 1550, 20
     } else {
         ToolTip
     }
 }
 
 TransAndReplaceSelectedText(from_lang, to_lang) {
-    sourceText := GetSelectedText()
-    if (sourceText) {
-        transText := GoogleTranslate(sourceText, from_lang, to_lang, True)
-        ToolTip %sourceText%`n`n%transText%, 1550, 20
-        Send %transText%
+    source_text := GetSelectedText()
+    if (source_text) {
+        trans_text := GoogleTranslate(source_text, from_lang, to_lang, True)
+        ToolTip %source_text%`n`n%trans_text%, 1550, 20
+        Send %trans_text%
     } else {
         ToolTip
     }
 }
 
 HotTrans(from_lang, to_lang) {
-    oldText := GetSelectedText()
+    old_text := GetSelectedText()
     TransAndReplaceSelectedText(from_lang, to_lang)
-    StringLower, lowerText, oldText
-    ClipBoard := lowerText
+    StringLower, lower_text, old_text
+    ClipBoard := lower_text
 }
 
+TransInput(from_lang, to_lang) {
+    Input source_text, T10, {Enter}{Esc}
+    if (source_text) {
+        trans_text := GoogleTranslate(source_text, from_lang, to_lang, True)
+        ToolTip %source_text%`n`n%trans_text%, 1550, 20
+        Sleep 200
+        ComObjCreate("SAPI.SpVoice").Speak(source_text)
+    } else {
+        ToolTip
+    }
+}
 
 ; Код перевода скопирован от уважаемого teadrinker, http://forum.script-coding.com/viewtopic.php?id=4492
 CreateUrl(text, lng) {
@@ -507,7 +585,7 @@ Light(step) {
     }
     if (curt < minBrightness)  ; parenthesis is necessary here
         curt := minBrightness
-    toSet := curt + step
+    toSet := curt + step*2
     if (toSet > 100)
         return
     if (toSet < minBrightness)
